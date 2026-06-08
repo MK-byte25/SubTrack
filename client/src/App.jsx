@@ -512,6 +512,7 @@ function FloatingCard({
         if (registerPhysics) registerPhysics(sub.id, el);
       }}
       layout={!isSandbox}
+      transition={{ type: "spring", stiffness: 300, damping: 30 }}
       className={isSandbox 
         ? `absolute top-0 left-0 perspective-1000 ${isEditing ? 'w-full sm:w-64 aspect-square scale-100 z-50' : 'w-[160px] h-[56px] z-10'}`
         : `w-full h-full perspective-1000 relative ${isEditing ? 'z-50' : ''}`
@@ -1218,7 +1219,7 @@ function App() {
           ) : (
             sortedSubs.map((sub, index) => (
               <FloatingCard 
-                key={sub.id} 
+                key={sub._id || sub.id} 
                 sub={sub} 
                 index={index} 
                 mouseX={mouseX} 
