@@ -3,7 +3,8 @@ const Subscription = require('../models/Subscription');
 // Get all subscriptions
 const getSubs = async (req, res) => {
   try {
-    const subs = await Subscription.find().sort({ createdAt: -1 });
+    const query = req.query.userId ? { userId: req.query.userId } : {};
+    const subs = await Subscription.find(query).sort({ createdAt: -1 });
     res.status(200).json(subs);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -31,4 +32,18 @@ const deleteSub = async (req, res) => {
   }
 };
 
-module.exports = { getSubs, addSub, deleteSub };
+// Update a subscription
+const updateSub = async (req, res) => {
+  try {
+    const updatedSub = await Subscription.findByIdAndUpdate(
+      req.params.id, 
+      req.body, 
+      { new: true }
+    );
+    res.status(200).json(updatedSub);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+};
+
+module.exports = { getSubs, addSub, deleteSub, updateSub };
