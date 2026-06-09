@@ -1163,10 +1163,10 @@ function App() {
 
 
       {/* Fixed Header */}
-      <header className="fixed top-0 left-0 w-full z-50 px-8 py-4 flex items-center justify-between bg-slate-950/50 backdrop-blur-2xl border-b border-white/10">
+      <header className="fixed top-0 left-0 w-full z-50 px-4 sm:px-8 py-4 flex flex-wrap items-center justify-between bg-slate-950/50 backdrop-blur-2xl border-b border-white/10 gap-y-3">
         {/* Left: App Name */}
-        <div className="flex-1">
-          <h1 className="text-3xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-purple-500 tracking-tight select-none inline-block">
+        <div className="flex-1 min-w-fit pr-2">
+          <h1 className="text-xl sm:text-3xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-purple-500 tracking-tight select-none inline-block">
             SubTrack
           </h1>
         </div>
