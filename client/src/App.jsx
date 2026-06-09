@@ -1186,63 +1186,82 @@ function App() {
         </div>
 
         {/* Right: Controls */}
-        <div className="flex gap-3 items-center justify-end flex-1">
+        <div className="flex gap-2 sm:gap-3 items-center justify-end flex-1">
           {!currentUser ? (
             <button 
+              title="Sign In to Sync"
               onClick={() => setShowAuthModal(true)}
-              className="bg-white/5 hover:bg-white/10 border border-white/10 rounded-2xl px-8 py-3 text-white outline-none cursor-pointer backdrop-blur-md transition-all text-sm font-semibold hidden sm:flex items-center gap-3 w-52 justify-center shadow-lg hover:shadow-[0_0_20px_rgba(255,255,255,0.1)]"
+              className="bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl px-3 sm:px-6 py-2 sm:py-2.5 text-white outline-none cursor-pointer backdrop-blur-md transition-all text-sm font-semibold flex items-center gap-2 shadow-lg hover:shadow-[0_0_20px_rgba(255,255,255,0.1)]"
             >
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" /></svg>
-              Sign In to Sync
+              <svg className="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" /></svg>
+              <span className="hidden sm:inline whitespace-nowrap">Sign In to Sync</span>
             </button>
           ) : (
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-cyan-400 to-purple-500 p-[2px] cursor-pointer shrink-0">
+            <div className="flex items-center gap-2 sm:gap-3">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-tr from-cyan-400 to-purple-500 p-[2px] cursor-pointer shrink-0">
                 {currentUser.photoURL ? (
                   <img src={currentUser.photoURL} alt="Avatar" className="w-full h-full rounded-full object-cover" />
                 ) : (
-                  <div className="w-full h-full rounded-full bg-slate-900 flex items-center justify-center text-sm font-bold text-white tracking-widest uppercase">
+                  <div className="w-full h-full rounded-full bg-slate-900 flex items-center justify-center text-xs sm:text-sm font-bold text-white tracking-widest uppercase">
                     {currentUser.email ? currentUser.email.charAt(0) : 'U'}
                   </div>
                 )}
               </div>
               <button 
+                title="Sign Out"
                 onMouseDown={handleSignOut}
-                className="bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-white text-sm whitespace-nowrap hover:bg-red-500/20 hover:text-red-400 hover:border-red-500/30 shadow-2xl font-medium transition-colors"
+                className="bg-white/5 border border-white/10 rounded-xl px-3 sm:px-4 py-2 sm:py-2.5 text-white text-sm whitespace-nowrap hover:bg-red-500/20 hover:text-red-400 hover:border-red-500/30 shadow-2xl font-medium transition-colors flex items-center gap-2"
               >
-                Sign Out
+                <svg className="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" /></svg>
+                <span className="hidden sm:inline whitespace-nowrap">Sign Out</span>
               </button>
             </div>
           )}
 
           <button 
+            title={viewMode === 'grid' ? 'Sandbox Mode' : 'Grid Mode'}
             onClick={() => setViewMode(v => v === 'grid' ? 'sandbox' : 'grid')}
-            className="bg-cyan-500/20 border border-cyan-400/50 rounded-xl px-5 py-2 text-cyan-50 outline-none cursor-pointer backdrop-blur-md hover:bg-cyan-500/30 transition-all text-sm font-semibold shadow-[0_0_15px_rgba(6,182,212,0.3)] hidden sm:block whitespace-nowrap"
+            className="flex items-center gap-2 bg-cyan-500/20 border border-cyan-400/50 rounded-xl px-3 sm:px-5 py-2 sm:py-2.5 text-cyan-50 outline-none cursor-pointer backdrop-blur-md hover:bg-cyan-500/30 transition-all text-sm font-semibold shadow-[0_0_15px_rgba(6,182,212,0.3)] whitespace-nowrap"
           >
-            {viewMode === 'grid' ? 'Sandbox Mode' : 'Grid Mode'}
+            {viewMode === 'grid' ? (
+              <svg className="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5" /></svg>
+            ) : (
+              <svg className="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" /></svg>
+            )}
+            <span className="hidden sm:inline whitespace-nowrap">{viewMode === 'grid' ? 'Sandbox Mode' : 'Grid Mode'}</span>
           </button>
 
-          <select 
-            value={sortBy}
-            onChange={(e) => setSortBy(e.target.value)}
-            className="bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-white outline-none cursor-pointer backdrop-blur-md appearance-none hover:bg-white/10 transition-all text-sm font-semibold hidden lg:block"
-          >
-            <option value="price-desc" className="bg-[#080314]">Price (High to Low)</option>
-            <option value="price-asc" className="bg-[#080314]">Price (Low to High)</option>
-            <option value="name-asc" className="bg-[#080314]">Name (A-Z)</option>
-          </select>
+          <div className="relative flex items-center gap-2 bg-white/5 border border-white/10 rounded-xl px-3 sm:px-4 py-2 sm:py-2.5 hover:bg-white/10 transition-all text-sm font-semibold text-white cursor-pointer" title="Sort">
+            <svg className="w-5 h-5 text-slate-300 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4h13M3 8h9m-9 4h6m4 0l4-4m0 0l4 4m-4-4v12" /></svg>
+            <span className="hidden sm:inline whitespace-nowrap">
+              {sortBy === 'price-desc' ? 'Price (High)' : sortBy === 'price-asc' ? 'Price (Low)' : 'Name (A-Z)'}
+            </span>
+            <select 
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value)}
+              className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+            >
+              <option value="price-desc" className="bg-[#080314]">Price (High to Low)</option>
+              <option value="price-asc" className="bg-[#080314]">Price (Low to High)</option>
+              <option value="name-asc" className="bg-[#080314]">Name (A-Z)</option>
+            </select>
+          </div>
 
-          <select 
-            value={currency}
-            onChange={(e) => setCurrency(e.target.value)}
-            className="bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-white outline-none cursor-pointer backdrop-blur-md appearance-none hover:bg-white/10 transition-all text-sm font-semibold"
-          >
-            <option value="USD" className="bg-[#080314]">USD ($)</option>
-            <option value="EUR" className="bg-[#080314]">EUR (€)</option>
-            <option value="GBP" className="bg-[#080314]">GBP (£)</option>
-            <option value="INR" className="bg-[#080314]">INR (₹)</option>
-            <option value="JPY" className="bg-[#080314]">JPY (¥)</option>
-          </select>
+          <div className="relative flex items-center gap-2 bg-white/5 border border-white/10 rounded-xl px-3 sm:px-4 py-2 sm:py-2.5 hover:bg-white/10 transition-all text-sm font-semibold text-white cursor-pointer" title="Currency">
+            <svg className="w-5 h-5 text-slate-300 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            <span className="hidden sm:inline whitespace-nowrap">{currency}</span>
+            <select 
+              value={currency}
+              onChange={(e) => setCurrency(e.target.value)}
+              className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+            >
+              <option value="USD" className="bg-[#080314]">USD ($)</option>
+              <option value="EUR" className="bg-[#080314]">EUR (€)</option>
+              <option value="GBP" className="bg-[#080314]">GBP (£)</option>
+              <option value="INR" className="bg-[#080314]">INR (₹)</option>
+              <option value="JPY" className="bg-[#080314]">JPY (¥)</option>
+            </select>
+          </div>
         </div>
       </header>
 
