@@ -1,6 +1,6 @@
 const SubList = ({ subs, fetchSubs }) => {
   const handleDelete = async (id) => {
-    await fetch(`http://localhost:5000/api/subscriptions/${id}`, { method: 'DELETE' });
+    await fetch(`https://subtrack-backend-86nz.onrender.com/api/subscriptions/${id}`, { method: 'DELETE' });
     fetchSubs(); // Refresh the list
   };
 

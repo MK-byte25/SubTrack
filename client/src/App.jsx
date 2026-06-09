@@ -745,7 +745,7 @@ function App() {
 
   const deleteSubscription = async (id) => {
     try {
-      await fetch(`http://localhost:5000/api/subscriptions/${id}`, { method: 'DELETE' });
+      await fetch(`https://subtrack-backend-86nz.onrender.com/api/subscriptions/${id}`, { method: 'DELETE' });
     } catch (err) {
       console.warn("DB offline, proceeding locally");
     }
@@ -787,7 +787,7 @@ function App() {
     setEditingId(null);
 
     try {
-      await fetch(`http://localhost:5000/api/subscriptions/${id}`, {
+      await fetch(`https://subtrack-backend-86nz.onrender.com/api/subscriptions/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
@@ -838,7 +838,7 @@ function App() {
     setIsInputFocused(false);
 
     // Background DB Sync
-    fetch('http://localhost:5000/api/subscriptions', {
+    fetch('https://subtrack-backend-86nz.onrender.com/api/subscriptions', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

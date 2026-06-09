@@ -5,7 +5,7 @@ const SubForm = ({ fetchSubs }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await fetch('http://localhost:5000/api/subscriptions', {
+    await fetch('https://subtrack-backend-86nz.onrender.com/api/subscriptions', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ ...formData, cost: Number(formData.cost) })
