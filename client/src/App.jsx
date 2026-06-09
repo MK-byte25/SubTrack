@@ -4,16 +4,63 @@ import { auth, googleProvider, githubProvider } from './firebase';
 import { signInWithPopup, signOut, onAuthStateChanged } from 'firebase/auth';
 
 const POPULAR_BRANDS = [
-  { name: 'Netflix', color: 'rgba(229,9,20,1)' },
-  { name: 'Spotify', color: 'rgba(29,185,84,1)' },
-  { name: 'Amazon Prime', color: 'rgba(0,168,225,1)' },
-  { name: 'Disney+', color: 'rgba(17,60,207,1)' },
-  { name: 'Hulu', color: 'rgba(28,231,131,1)' },
-  { name: 'Apple Music', color: 'rgba(250,36,60,1)' },
-  { name: 'YouTube Premium', color: 'rgba(255,0,0,1)' },
+  // 🤖 Artificial Intelligence & Dev Tools
+  { name: 'Gemini Advanced', color: 'rgba(28,105,255,1)' }, 
   { name: 'ChatGPT Plus', color: 'rgba(16,163,127,1)' },
+  { name: 'Claude Pro', color: 'rgba(217,119,87,1)' },
+  { name: 'Perplexity Pro', color: 'rgba(34,184,205,1)' },
+  { name: 'Midjourney', color: 'rgba(40,40,40,1)' },
+  { name: 'GitHub Copilot', color: 'rgba(36,41,47,1)' },
+
+  // 📺 Video Streaming (India Favorites)
+  { name: 'Netflix', color: 'rgba(229,9,20,1)' },
+  { name: 'Amazon Prime Video', color: 'rgba(0,168,225,1)' },
+  { name: 'JioCinema Premium', color: 'rgba(215,0,110,1)' },
+  { name: 'Disney+ Hotstar', color: 'rgba(0,20,50,1)' },
+  { name: 'SonyLIV', color: 'rgba(22,23,27,1)' },
+  { name: 'Zee5', color: 'rgba(130,36,128,1)' },
+  { name: 'Crunchyroll', color: 'rgba(244,117,33,1)' },
+  { name: 'Apple TV+', color: 'rgba(0,0,0,1)' },
+
+  // 🎧 Music & Audio
+  { name: 'Spotify', color: 'rgba(29,185,84,1)' },
+  { name: 'YouTube Premium', color: 'rgba(255,0,0,1)' },
+  { name: 'Wynk Music', color: 'rgba(239,43,45,1)' },
+  { name: 'JioSaavn Pro', color: 'rgba(0,191,165,1)' },
+  { name: 'Apple Music', color: 'rgba(250,36,60,1)' },
+  { name: 'Audible', color: 'rgba(242,166,41,1)' },
+
+  // 🛵 Food, Delivery & E-Commerce (Essential Indian Subscriptions)
+  { name: 'Zomato Gold', color: 'rgba(203,18,53,1)' },
+  { name: 'Swiggy One', color: 'rgba(252,128,25,1)' },
+  { name: 'Flipkart Plus Premium', color: 'rgba(40,116,240,1)' },
+  { name: 'Amazon Prime India', color: 'rgba(255,153,0,1)' },
+  { name: 'Blinkit Wallet / Pass', color: 'rgba(248,203,71,1)' },
+  { name: 'BigBasket bbstar', color: 'rgba(132,194,37,1)' },
+
+  // 💼 Productivity, Bundles & Software
+  { name: 'Times Prime', color: 'rgba(21,34,62,1)' },
+  { name: 'Notion', color: 'rgba(0,0,0,1)' },
   { name: 'Adobe Creative Cloud', color: 'rgba(255,0,0,1)' },
-  { name: 'Notion', color: 'rgba(200,200,200,1)' },
+  { name: 'Microsoft 365', color: 'rgba(216,59,1,1)' },
+  { name: 'Canva Pro', color: 'rgba(0,196,204,1)' },
+
+  // ☁️ Cloud Storage
+  { name: 'Google One', color: 'rgba(66,133,244,1)' },
+  { name: 'Apple iCloud+', color: 'rgba(0,112,201,1)' },
+  { name: 'OneDrive', color: 'rgba(0,120,212,1)' },
+
+  // 🎮 Gaming & Community
+  { name: 'Xbox Game Pass', color: 'rgba(16,124,16,1)' },
+  { name: 'PlayStation Plus', color: 'rgba(0,67,156,1)' },
+  { name: 'Discord Nitro', color: 'rgba(88,101,242,1)' },
+  { name: 'YouTube Memberships', color: 'rgba(30,30,30,1)' },
+
+  // 🏋️ Health, News & Lifestyle
+  { name: 'Cult.fit Pass', color: 'rgba(255,50,75,1)' },
+  { name: 'Duolingo Super', color: 'rgba(88,204,2,1)' },
+  { name: 'Strava', color: 'rgba(252,76,2,1)' },
+  { name: 'Headspace', color: 'rgba(244,121,32,1)' }
 ];
 
 const CURRENCY_SYMBOLS = { USD: '$', INR: '₹', EUR: '€', JPY: '¥', GBP: '£' };
