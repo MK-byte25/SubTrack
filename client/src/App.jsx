@@ -678,7 +678,7 @@ function App() {
       setSubs([]);
       return;
     }
-    fetch(`http://localhost:5000/api/subscriptions?userId=${currentUser.uid}`)
+    fetch(`https://subtrack-backend-86nz.onrender.com/api/subscriptions?userId=${currentUser.uid}`)
       .then(res => res.json())
       .then(data => {
         const mappedData = data.map(d => ({ ...d, id: d._id }));
